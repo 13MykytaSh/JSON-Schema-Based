@@ -20,7 +20,7 @@ export function GetRandomNumberBetween(min, max) {
         return null;
     }
     // The maximum is inclusive and the minimum is inclusive
-    return Math.random() * (max - min + 1) + min;
+    return Math.random() * (max - min) + min;
 }
 
 /**

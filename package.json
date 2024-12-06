@@ -9,9 +9,13 @@
   "description": "",
   "scripts": {
     "Run server": "node server.js",
-    "Run generation": "node generateObjectExample.js"
+    "Run generation": "node generateObjectExample.js",
+    "Run tests": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
   }
 }
