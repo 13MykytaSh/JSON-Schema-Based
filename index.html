@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Generation</title>
+    <script type="module" src="./index.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 50%;
+            height: 300px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Object Generation</h1>
+    <div>
+        <textarea id="inputText" placeholder="Type schema here..."></textarea>
+        <textarea id="outputText" placeholder="Generated object will appear here..." readonly></textarea>
+    </div>
+    <button onclick="generateText()">Generate</button>
+</body>
+
+</html>

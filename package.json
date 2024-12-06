@@ -1,0 +1,17 @@
+{
+  "name": "json-schema-based",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "Run server": "node server.js",
+    "Run generation": "node generateObjectExample.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
