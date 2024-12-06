@@ -46,6 +46,7 @@ describe('NumberGenerator', () => {
     test('should return null when minimum is greater than maximum', () => {
         const schema = { minimum: 60, maximum: 30 };
 
+        // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => input);
 
         const result = generator.Generate(schema);
@@ -62,6 +63,7 @@ describe('NumberGenerator', () => {
     test('should return null when minimum and maximum are equal', () => {
         const schema = { minimum: 30, maximum: 30 };
 
+        // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => input);
 
         const result = generator.Generate(schema);
@@ -78,7 +80,9 @@ describe('NumberGenerator', () => {
     test('should generate a number within default min and max when schema has no min or max', () => {
         const schema = {};
 
+        // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => defaultValue);
+        // Mock GetRandomNumberBetween to return a fixed number
         GetRandomNumberBetween.mockReturnValue(500);
 
         const result = generator.Generate(schema);
@@ -95,6 +99,7 @@ describe('NumberGenerator', () => {
     test('should return null when schema contains non-numeric minimum and maximum', () => {
         const schema = { minimum: 'ten', maximum: 'fifty' };
 
+        // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => input);
 
         const result = generator.Generate(schema);
@@ -111,6 +116,7 @@ describe('NumberGenerator', () => {
     test('should return null when schema contains non-numeric minimum or maximum', () => {
         const schemaF = { minimum: 10, maximum: 'fifty' };
 
+        // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => input);
 
         const resultF = generator.Generate(schemaF);
