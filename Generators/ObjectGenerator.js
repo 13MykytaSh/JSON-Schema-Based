@@ -14,7 +14,7 @@ export class ObjectGenerator extends BaseGenerator {
      * @param {Object} schema - The schema defining object generation rules.
      * @param {Object} [schema.properties] - The properties schema for the object.
      * @param {Array} [schema.required=[]] - The list of required properties.
-     * @returns {Object|null} - The generated object, or `null` if the properties are invalid.
+     * @returns {Object} - The generated object, or `{}` if the properties are invalid.
      * 
      * @example
      * const schema = {
@@ -39,7 +39,7 @@ export class ObjectGenerator extends BaseGenerator {
         const result = {};
         //Checking the validity of the input data. Can't generate without properties.
         if (!schema.properties)
-            return null;
+            return result;
         const properties = schema.properties;
         const required = schema.required || [];
 

@@ -26,7 +26,7 @@ describe('ObjectGenerator', () => {
         // Generate an object
         const result = generator.Generate(schema);
 
-        expect(result).toBeNull();
+        expect(Object.keys(result)).toHaveLength(0);
     });
 
     it('should generate an object with required properties only', () => {

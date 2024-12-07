@@ -19,8 +19,7 @@ export class GenerationCore {
      *   - `"array"`: Generates an array.
      *   - `"object"`: Generates an object.
      * @param {Array} [schema.enum] - If present, selects a random value from this enumeration.
-     * @returns {*} - The generated data based on the schema.
-     * @throws {Error} - Throws an error if the schema is invalid or if the type is unsupported.
+     * @returns {*|null} - The generated data based on the schema, or `null` if the schema is invalid or if the type is unsupported.
      * 
      * @example
      * const schema = { type: "string", minLength: 5, maxLength: 10 };
@@ -46,11 +45,13 @@ export class GenerationCore {
     StartGeneration(schema) {
         //Checking the validity of the input data.
         if (!schema || typeof schema !== 'object') {
-            throw new Error('Invalid schema provided.');
+            return null;
         }
 
         // Determine the appropriate generator
         const generator = this.#GetGenerator(schema.enum ? 'enum' : schema.type)
+        if (!generator)
+            return null;
         return generator.Generate(schema);
     }
 
@@ -58,8 +59,7 @@ export class GenerationCore {
      * Retrieves the generator instance based on the type.
      * 
      * @param {string} type - The type of generator to retrieve.
-     * @returns {Object} - The corresponding generator instance.
-     * @throws {Error} - Throws an error if the type is unsupported.
+     * @returns {Object|null} - The corresponding generator instance, or `null` if the type is unsupported
      * 
      * @private
      */
@@ -80,7 +80,7 @@ export class GenerationCore {
             case 'object':
                 return new ObjectGenerator();
             default:
-                throw new Error(`Unsupported type: ${type}`);
+                return null;
         }
     }
 }
