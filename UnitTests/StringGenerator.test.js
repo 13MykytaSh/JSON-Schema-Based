@@ -13,10 +13,12 @@ describe('StringGenerator', () => {
     let generator;
 
     beforeEach(() => {
+        // Create a new instance of StringGenerator before each test
         generator = new StringGenerator();
     });
 
     afterEach(() => {
+        // Clear all mock calls between tests
         jest.clearAllMocks();
     });
 

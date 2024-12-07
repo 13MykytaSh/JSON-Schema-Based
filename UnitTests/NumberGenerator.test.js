@@ -11,10 +11,12 @@ describe('NumberGenerator', () => {
     let generator;
 
     beforeEach(() => {
+        // Create a new instance of NumberGenerator before each test
         generator = new NumberGenerator();
     });
 
     afterEach(() => {
+        // Clear all mock calls between tests
         jest.clearAllMocks();
     });
 

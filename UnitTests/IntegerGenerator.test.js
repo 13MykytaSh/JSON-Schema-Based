@@ -5,10 +5,12 @@ describe('IntegerGenerator', () => {
     let generator;
 
     beforeEach(() => {
+        // Create a new instance of IntegerGenerator before each test
         generator = new IntegerGenerator();
     });
 
     afterEach(() => {
+        // Clear all mock calls between tests
         jest.clearAllMocks();
     });
 

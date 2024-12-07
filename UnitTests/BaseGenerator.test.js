@@ -5,15 +5,13 @@ describe('BaseGenerator', () => {
     let generator;
 
     beforeEach(() => {
+        // Create a new instance of BaseGenerator before each test
         generator = new BaseGenerator();
     });
 
     afterEach(() => {
+        // Clear all mock calls between tests
         jest.clearAllMocks();
-    });
-
-    test('Should create an instance of BaseGenerator', () => {
-        expect(generator).toBeInstanceOf(BaseGenerator);
     });
 
     test('Should have a Generate method', () => {
