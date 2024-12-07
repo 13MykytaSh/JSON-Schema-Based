@@ -43,13 +43,13 @@ describe('ObjectGenerator', () => {
         GenerationCore.mockImplementation(() => {
             return {
                 // Change logic for StartGeneration this will help to get the required values
-                StartGeneration: (propSchema) => {
+                StartGeneration: jest.fn((propSchema) => {
                     switch (propSchema.type) {
                         case 'string': return 'generatedString';
                         case 'integer': return 42;
                         default: return null;
                     }
-                },
+                }),
             };
         });
 
@@ -82,13 +82,13 @@ describe('ObjectGenerator', () => {
         GenerationCore.mockImplementation(() => {
             return {
                 // Change logic for StartGeneration this will help to get the required values
-                StartGeneration: (propSchema) => {
+                StartGeneration: jest.fn((propSchema) => {
                     switch (propSchema.type) {
                         case 'string': return 'generatedString';
                         case 'boolean': return true;
                         default: return null;
                     }
-                },
+                }),
             };
         });
 
@@ -124,13 +124,13 @@ describe('ObjectGenerator', () => {
         GenerationCore.mockImplementation(() => {
             return {
                 // Change logic for StartGeneration this will help to get the required values
-                StartGeneration: (propSchema) => {
+                StartGeneration: jest.fn((propSchema) => {
                     switch (propSchema.type) {
                         case 'string': return 'requiredName';
                         case 'boolean': return true;
                         default: return null;
                     }
-                },
+                }),
             };
         });
 
