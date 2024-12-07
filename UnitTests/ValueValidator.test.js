@@ -2,6 +2,10 @@ import { GetValidValueBetween } from '../Utils/ValueValidator.js';
 
 describe('GetValidValueBetween', () => {
 
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     test('Should return preferred value if it is valid', () => {
         expect(GetValidValueBetween(5, 10)).toBe(5);
         expect(GetValidValueBetween('test1', 'test2')).toBe('test1');
