@@ -1,6 +1,6 @@
 import { ArrayGenerator } from '../Generators/ArrayGenerator.js';
 
-
+// The ArrayGenerator class is tested.
 // Tests if the generator correctly creates an array of integers/strings/booleans within the specified range of minItems and maxItems.
 // Create an array of unique items if uniqueItems is true.
 // Validates that the array contains no duplicates.
