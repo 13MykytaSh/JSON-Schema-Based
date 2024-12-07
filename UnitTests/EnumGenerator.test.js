@@ -1,6 +1,12 @@
 import { EnumGenerator } from '../Generators/EnumGenerator.js';
 import { GetIntRandomNumberUpTo } from '../Utils/RandomNumber.js';
 
+// Ensures that valid schemas with multiple and single values generate expected results.
+// Validates that the method returns null for invalid or empty schemas.
+// Mocks GetIntRandomNumberUpTo to control and test random behavior deterministically.
+// Ensures a single-value enum always returns that value.
+// Tests that different indices from the random number function produce corresponding results.
+
 // Mocking utility functions to ensure controlled tests
 jest.mock('../Utils/RandomNumber', () => ({
     GetIntRandomNumberUpTo: jest.fn(),
@@ -19,6 +25,7 @@ describe('EnumGenerator', () => {
         jest.clearAllMocks();
     });
 
+    // Test correct single generation from enum
     it('should return a value from the enum', () => {
         // Init schema
         const schema = { enum: ['red', 'green', 'blue'] };
@@ -34,6 +41,7 @@ describe('EnumGenerator', () => {
         expect(GetIntRandomNumberUpTo).toHaveBeenCalledWith(schema.enum.length - 1);
     });
 
+    // Test correct generation when invalid schema. Expected result is null
     it('should return null for an invalid schema', () => {
         // Init schema
         const invalidSchemas = [
@@ -52,6 +60,7 @@ describe('EnumGenerator', () => {
         });
     });
 
+    // Test correct generation from enum when only one value
     it('should handle enums with one value', () => {
         // Init schema
         const schema = { enum: ['singleValue'] };
@@ -64,11 +73,12 @@ describe('EnumGenerator', () => {
         expect(result).toBe('singleValue');
     });
 
+    // Test correct multiply generation from enum
     it('should generate values from the enum randomly', () => {
         // Init schema
         const schema = { enum: ['cat', 'dog', 'mouse'] };
         // Simulate multiple random outputs
-        const mockIndices = [0, 2, 1]; 
+        const mockIndices = [0, 2, 1];
         GetIntRandomNumberUpTo.mockImplementation(() => mockIndices.shift());
 
         // Generate a value from enum
@@ -78,6 +88,7 @@ describe('EnumGenerator', () => {
         expect(generator.Generate(schema)).toBe('dog');
     });
 
+    // Test correct generation when enum is empty
     it('should not call the random function if the enum is invalid', () => {
         // Init schema
         const schema = { enum: [] };
@@ -86,7 +97,7 @@ describe('EnumGenerator', () => {
         const result = generator.Generate(schema);
 
         expect(result).toBeNull();
-         // Verify no calls were made
+        // Verify no calls were made
         expect(GetIntRandomNumberUpTo).not.toHaveBeenCalled();
     });
 });
