@@ -10,8 +10,7 @@
   "scripts": {
     "Run server": "node server.js",
     "Run generation": "node generateObjectExample.js",
-    "Run tests": "jest",
-    "Run testsC": "jest --coverage"
+    "Run tests": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
