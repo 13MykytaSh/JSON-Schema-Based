@@ -51,7 +51,7 @@ export class NumberGenerator extends BaseGenerator {
         if (typeof min !== 'number' || typeof max !== 'number') {
             return null;
         }
-        if (min >= max) {
+        if (min > max) {
             return null;
         }
         //Generates a random floating-point number between the minimum and maximum

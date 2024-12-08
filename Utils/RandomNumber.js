@@ -16,7 +16,7 @@ export function GetRandomNumberBetween(min, max) {
     if (typeof min !== 'number' || typeof max !== 'number') {
         return null;
     }
-    if (min >= max) {
+    if (min > max) {
         return null;
     }
     // The maximum is inclusive and the minimum is inclusive
