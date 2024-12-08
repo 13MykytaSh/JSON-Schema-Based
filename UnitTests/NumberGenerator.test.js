@@ -4,7 +4,7 @@ import { GetValidValueBetween } from '../Utils/ValueValidator.js';
 
 // The NumberGenerator class is tested.
 // Checks that the generator correctly returns a random number within the specified minimum and maximum when provided.
-// Checks with an invalid range (min > max)
+// Checks with an invalid range (minimum > maximum)
 // Checks that the generator returns null if the minimum value is greater than the maximum.
 // Checks that if schema values ​​are not provided, the generator uses the default values ​​MIN_VALUE (0) and MAX_VALUE (1000).
 // Checks that if the schema contains non-numeric minimum or maximum values, the generator correctly returns null.
