@@ -102,8 +102,8 @@ describe('ArrayGenerator', () => {
         // Init schema
         const schema = {
             items: { type: 'integer', minimum: 0, maximum: 2 },
-            minItems: 3,
-            maxItems: 3,
+            minItems: 5,
+            maxItems: 5,
             uniqueItems: true,
         };
         // Generate an array of integer

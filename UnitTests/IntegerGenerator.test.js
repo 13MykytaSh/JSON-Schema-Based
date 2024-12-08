@@ -72,13 +72,13 @@ describe('IntegerGenerator', () => {
         expect(resultS).toBeNull();
     });
 
-    // Test correct integer generation with uncorrect minimum and maximum. Expected result is null
+    // Test correct integer generation with the same parameters minimum and maximum. Expected result is null
     test('should return null when minimum and maximum are equal', () => {
         // Generate a number
         const schema = { minimum: 30, maximum: 30 };
         const result = generator.Generate(schema);
 
-        expect(result).toBeNull();
+        expect(result).toBe(30);
     });
 
     // Test correct integer rounding

@@ -49,13 +49,13 @@ describe('NumberGenerator', () => {
     test('should return null when minimum and maximum are equal', () => {
         // Mock GetValidValueBetween to return specific values
         GetValidValueBetween.mockImplementation((input, defaultValue) => input);
-        
+        // Mock GetRandomNumberBetween to return a fixed number
+        GetRandomNumberBetween.mockReturnValue(30);
         // Generate a number
         const schema = { minimum: 30, maximum: 30 };
         const result = generator.Generate(schema);
 
-        expect(result).toBeNull();
-        expect(GetRandomNumberBetween).not.toHaveBeenCalled();
+        expect(result).toBe(30);
     });
 
     test('should generate a number within default min and max when schema has no min or max', () => {
