@@ -2,6 +2,14 @@ import { ObjectGenerator } from '../Generators/ObjectGenerator.js';
 import { BooleanGenerator } from '../Generators/BooleanGenerator.js';
 import { GenerationCore } from '../Generators/GenerationCore.js';
 
+// The ObjectGenerator class is tested.
+// Check that if properties are missing or invalid, the generator returns null.
+// Check that required properties are always generated with valid schemas.
+// Check that both required and optional properties are correctly handled in the same schema.
+// Check the behavior when required properties do not have a correct schema.
+// Simulates a BooleanGenerator to check for accidental inclusion of optional properties.
+// Simulates a GenerationCore to generate expected objects.
+
 // Mocking classes to ensure controlled tests
 jest.mock('../Generators/BooleanGenerator.js');
 jest.mock('../Generators/GenerationCore.js');
@@ -19,6 +27,7 @@ describe('ObjectGenerator', () => {
         jest.clearAllMocks();
     });
 
+    //Test correct object generation when schema is empty object. Expected result is null
     it('should return null if schema has no properties', () => {
         // Init schema
         const schema = {};
@@ -29,6 +38,8 @@ describe('ObjectGenerator', () => {
         expect(Object.keys(result)).toHaveLength(0);
     });
 
+    //Test correct object generation when schema is correct and all properties is required.
+    //Expected result all required properties is exists.
     it('should generate an object with required properties only', () => {
         // Init schema
         const schema = {
@@ -62,6 +73,8 @@ describe('ObjectGenerator', () => {
         });
     });
 
+    //Test correct object generation when the schema is correct and there are no required properties. 
+    //Expected result: not all properties may exist.
     it('should generate an object with optional properties based on BooleanGenerator', () => {
         // Init schema
         const schema = {
@@ -101,6 +114,8 @@ describe('ObjectGenerator', () => {
         });
     });
 
+    //Test correct object generation when the schema is correct and the required properties exist.
+    //Expected result: required properties must exist.
     it('should handle required and optional properties', () => {
         // Init schema
         const schema = {
@@ -144,6 +159,8 @@ describe('ObjectGenerator', () => {
         });
     });
 
+    //Test correct object generation when schema is uncorrect, Properties is empty. 
+    //Expected result is null.
     it('should return null for required properties without a schema', () => {
         // Init schema
         const schema = {
