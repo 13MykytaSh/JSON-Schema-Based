@@ -1,6 +1,15 @@
 import { StringGenerator } from '../Generators/StringGenerator.js';
 import { GetRandomNumberBetween, GetIntRandomNumberUpTo } from '../Utils/RandomNumber.js';
 
+// The StringGenerator class is tested.
+// Checks string generation
+// Checks string generation when the string length is between minLength and maxLength.
+// Checks string generation when the string characters belong to the allowed set (characters).
+// Checks string generation when minLength > maxLength.
+// Checks string generation when minLength or maxLength contain invalid values ​​(e.g. strings, null, or undefined).
+// Checks string generation when schema is empty, using MIN_LENGTH and MAX_LENGTH values.
+// Checks minimum (minLength) and maximum (maxLength) string lengths.
+
 // Mocking utility functions to ensure controlled tests
 jest.mock('../Utils/RandomNumber', () => ({
     GetIntRandomNumberUpTo: jest.fn(),
@@ -21,6 +30,7 @@ describe('StringGenerator', () => {
         jest.clearAllMocks();
     });
 
+    // Test correct string generation with correct range
     test('Should generate a string within the specified length range', () => {
         // Length of the string
         GetRandomNumberBetween.mockReturnValue(5);
@@ -37,6 +47,7 @@ describe('StringGenerator', () => {
         expect(GetRandomNumberBetween).toHaveBeenCalledWith(5, 10);
     });
 
+    // Test correct string generation with uncorrect range
     test('Should return null for invalid schema (minLength >= maxLength)', () => {
         // Generate a string
         const schema = { minLength: 10, maxLength: 5 };
@@ -45,6 +56,7 @@ describe('StringGenerator', () => {
         expect(result).toBeNull();
     });
 
+    // Test correct string generation with empty schema
     test('Should use default min and max length if schema is empty', () => {
         // Mock GetRandomNumberBetween to return a fixed number
         GetRandomNumberBetween.mockReturnValue(100);
@@ -58,6 +70,7 @@ describe('StringGenerator', () => {
         expect(GetRandomNumberBetween).toHaveBeenCalledWith(1, 256);
     });
 
+    // Test correct string generation with uncorrect minimum or maximum. Expected result is null
     test('should return null when schema contains non-numeric minimum or maximum', () => {
         //Make the second parameter not a number
         const schemaF = { minLength: 'five', maxLength: 10 };
@@ -70,6 +83,7 @@ describe('StringGenerator', () => {
         expect(resultS).toBeNull();
     });
 
+    // Test correct string generation with a preset character selection set. Expected result is BCDEF
     test('Should generate a string with characters from the predefined set', () => {
         // Mock GetRandomNumberBetween to return a fixed number
         GetRandomNumberBetween.mockReturnValue(5);
