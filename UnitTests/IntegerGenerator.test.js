@@ -1,5 +1,6 @@
 import { IntegerGenerator } from '../Generators/IntegerGenerator.js';
 
+// The IntegerGenerator class is tested.
 // Checks that with a valid schema the method returns integers between minimum and maximum.
 // Checks that null is returned if minimum > maximum.
 // Checks that the method works correctly with an empty schema object, using default values ​​from the parent class NumberGenerator.

@@ -1,6 +1,7 @@
 import { EnumGenerator } from '../Generators/EnumGenerator.js';
 import { GetIntRandomNumberUpTo } from '../Utils/RandomNumber.js';
 
+// The EnumGenerator class is tested.
 // Ensures that valid schemas with multiple and single values generate expected results.
 // Validates that the method returns null for invalid or empty schemas.
 // Mocks GetIntRandomNumberUpTo to control and test random behavior deterministically.

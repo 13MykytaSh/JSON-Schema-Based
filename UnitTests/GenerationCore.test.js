@@ -7,6 +7,7 @@ import { BooleanGenerator } from '../Generators/BooleanGenerator.js';
 import { ArrayGenerator } from '../Generators/ArrayGenerator.js';
 import { ObjectGenerator } from '../Generators/ObjectGenerator.js';
 
+// The GenerationCore class is tested.
 // Checks that EnumGenerator is used and returns the expected value.
 // Checks that StringGenerator is called with the correct schema.
 // Checks that NumberGenerator and IntegerGenerator handle their respective types correctly.
