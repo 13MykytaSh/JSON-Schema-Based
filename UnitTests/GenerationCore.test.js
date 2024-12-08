@@ -7,6 +7,15 @@ import { BooleanGenerator } from '../Generators/BooleanGenerator.js';
 import { ArrayGenerator } from '../Generators/ArrayGenerator.js';
 import { ObjectGenerator } from '../Generators/ObjectGenerator.js';
 
+// Checks that EnumGenerator is used and returns the expected value.
+// Checks that StringGenerator is called with the correct schema.
+// Checks that NumberGenerator and IntegerGenerator handle their respective types correctly.
+// Checks the functionality of BooleanGenerator for boolean schemas.
+// Checks the behavior of ArrayGenerator for array schemas with nested element types.
+// Checks object generation, ensuring that ObjectGenerator handles schemas with properties and required fields.
+// Checks for cases where the schema is null or undefined, ensuring that null is returned.
+// Checks that unsupported types return null without error.
+
 // Mocking all generators
 jest.mock('../Generators/EnumGenerator');
 jest.mock('../Generators/StringGenerator');
@@ -52,6 +61,7 @@ describe('GenerationCore', () => {
         jest.clearAllMocks();
     });
 
+    // Test correct enum generation
     it('should generate data for "enum"', () => {
         // Init schema
         const schema = { enum: ['red', 'green', 'blue'] };
@@ -62,6 +72,7 @@ describe('GenerationCore', () => {
         expect(EnumGenerator).toHaveBeenCalled();
     });
 
+    // Test correct string generation
     it('should generate data for "string"', () => {
         // Init schema
         const schema = { type: 'string', minLength: 5, maxLength: 10 };
@@ -72,6 +83,7 @@ describe('GenerationCore', () => {
         expect(StringGenerator).toHaveBeenCalled();
     });
 
+    // Test correct number generation
     it('should generate data for "number"', () => {
         // Init schema
         const schema = { type: 'number', minimum: 10, maximum: 100 };
@@ -82,6 +94,7 @@ describe('GenerationCore', () => {
         expect(NumberGenerator).toHaveBeenCalled();
     });
 
+    // Test correct integer generation
     it('should generate data for "integer"', () => {
         // Init schema
         const schema = { type: 'integer', minimum: 1, maximum: 100 };
@@ -92,6 +105,7 @@ describe('GenerationCore', () => {
         expect(IntegerGenerator).toHaveBeenCalled();
     });
 
+    // Test correct boolean generation
     it('should generate data for "boolean"', () => {
         // Init schema
         const schema = { type: 'boolean' };
@@ -102,6 +116,7 @@ describe('GenerationCore', () => {
         expect(BooleanGenerator).toHaveBeenCalled();
     });
 
+    // Test correct array generation
     it('should generate data for "array"', () => {
         // Init schema
         const schema = { type: 'array', items: { type: 'integer' }, minItems: 2, maxItems: 5 };
@@ -112,6 +127,7 @@ describe('GenerationCore', () => {
         expect(ArrayGenerator).toHaveBeenCalled();
     });
 
+    // Test correct object generation
     it('should generate data for "object"', () => {
         // Init schema
         const schema = {
@@ -128,6 +144,7 @@ describe('GenerationCore', () => {
         expect(ObjectGenerator).toHaveBeenCalled();
     });
 
+    // Test correct generation when schema is null. Expected result is null
     it('should return null for invalid schema', () => {
         // Init schema
         const schema = null;
@@ -136,6 +153,7 @@ describe('GenerationCore', () => {
         expect(result).toBeNull();
     });
 
+    // Test correct generation when type is 'unsupported'. Expected result is null
     it('should return null for unsupported type', () => {
         // Init schema
         const schema = { type: 'unsupported' };
@@ -145,6 +163,7 @@ describe('GenerationCore', () => {
         expect(result).toBeNull();
     });
 
+    // Test correct generation when schema is empty. Expected result is null
     it('should return null for empty schema', () => {
         // Init schema
         const schema = {};
